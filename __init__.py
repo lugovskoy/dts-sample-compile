@@ -31,15 +31,8 @@ class SubTask():
         return True
 
 
-    def __result(self, output_dir, retcode):
-        return {
-          'gcc': os.path.join(output_dir, 'bin'),
-          'passed': retcode == 0
-        }
-
-
     def run(self, q, args):
         print "run"
         script = os.path.join(self.__wd, 'conf_and_make.sh')
         retcode = subprocess.call([script, self.__wd, self.__output_dir, self.__log])
-        q.put({'retcode': retcode, 'result': self.__result(self.__output_dir, retcode)})
+        q.put({'tcc': os.path.join(self.__output_dir, 'tcc', 'bin')})
