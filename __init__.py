@@ -19,8 +19,8 @@ class Task(object):
     @staticmethod
     def setup(srcdir):
         print "__setup__"
-        return 
         retcode = subprocess.call(['git', 'clone', 'https://github.com/lugovskoy/dts-sample-compile.git', srcdir])
+        return
         if retcode != 0:
             raise Exception("Cannot setup git repo in {0}".format(srcdir))
 
